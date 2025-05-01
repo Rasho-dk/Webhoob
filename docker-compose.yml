@@ -1,0 +1,8 @@
+services:
+  webhoob:
+    image: ${DOCKER_REGISTRY-}webhoob
+    build:
+      context: .
+      dockerfile: Webhoob/Dockerfile
+    volumes:
+      - ./data:/app/data
