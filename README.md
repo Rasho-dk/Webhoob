@@ -21,7 +21,10 @@ The system includes Swagger for interactive API documentation. You can use it to
 ---
 
 ## Endpoints overview
-
+- **URL**: 
+    ```URL
+        https://webhoob20250501214221-cad2cdb4hncsg6bu.northeurope-01.azurewebsites.net 
+    ```
 ### 1. Get all registered webhooks
 - **Endpoint**: `GET /api/Webhooks`
 - **Description**: Get all registered webhooks.
