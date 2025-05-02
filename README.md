@@ -54,7 +54,7 @@ The system includes Swagger for interactive API documentation. You can use it to
 
 ## Testing Webhooks locally
 
-To test the webhook system locally, you can set up a FastAPI server to reveve webhook events and expose it to the internet using `localtunnel` or similar
+To test the webhook system locally, you can set up a FastAPI server to receive webhook events and expose it to the internet using `localtunnel` or similar
 
 ### Steps to set up
 
