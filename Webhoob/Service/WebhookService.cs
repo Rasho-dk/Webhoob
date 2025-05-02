@@ -77,9 +77,10 @@ namespace Webhoob.Service
                     webhook.CallbackUrl
                 };
 
+                // simulate a ping with delay
+                await Task.Delay(3000); // Simulate a delay of 3 second
 
-                //try
-                //{
+
                 var content = new StringContent(JsonSerializer.Serialize(pingPayload), Encoding.UTF8, "application/json");
                 var response = await client.PostAsync(webhook.CallbackUrl, content);
                 if (!response.IsSuccessStatusCode)
@@ -87,11 +88,7 @@ namespace Webhoob.Service
                     Console.WriteLine($"Failed to ping {webhook.CallbackUrl}. Status: {response.StatusCode}");
                     throw new Exception($"Failed to ping {webhook.CallbackUrl}. Status: {response.StatusCode}");
                 }
-                //}
-                //catch (Exception ex)
-                //{
-                //    Console.WriteLine($"Error pinging {webhook.CallbackUrl}: {ex.Message}");
-                //}
+
             }
         }
     }

@@ -1,6 +1,7 @@
 # Webhook System
 This project provides a simple webhook registration system with endpoints for registering, unregistering, and testing webhooks.
 
+The webhook system allows clients to subscribe and receive real-time updates for specific events via webhooks.
 ---
 ## Features
 - **Register Webhooks**: Add a webhook with a callback URL and event types.
