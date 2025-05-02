@@ -13,6 +13,10 @@ namespace Webhoob.Controllers
 
         private readonly WebhookService _webhookService;
 
+        /// <summary>
+        /// Constructor for WebhooksController
+        /// </summary>
+        /// <param name="webhookService">Instance of WebhookService to handle webhook operations.</param>
         public WebhooksController(WebhookService webhookService)
         {
             _webhookService = webhookService;
