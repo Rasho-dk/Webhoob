@@ -78,7 +78,8 @@ To test the webhook system locally, you can set up a FastAPI server to receive w
 
 3. **Expose the server to the internet:** Use `localtunnel` to expose your local server to the internet:
     ``` bash
-        $ lt --port <port-number from the local server> --subdomain your subdomain name 
+        # lt --port <port-number from the local server> --subdomain your subdomain name
+        $ lt --p Port -s YOUR_SUBDOMAIN 
     ```
 4. **Register the Webhook:** Create a ``POST`` request to the ``Register a Webhook`` endpoint as explained in the Endpoints Overview section. Use the following Python code to register your webhook:
 
