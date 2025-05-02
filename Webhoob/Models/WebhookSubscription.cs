@@ -13,6 +13,7 @@ namespace Webhoob.Models
         /// Unique identifier for the webhook subscription.
         /// </summary>
         [Key]
+        //[JsonIgnore]
         public Guid Guid { get; set; } = Guid.NewGuid();
         /// <summary>
         /// The URL to which the webhook will send notifications.
@@ -34,6 +35,15 @@ namespace Webhoob.Models
         }
 
         //public string? Secret { get; set; } // Used for HMAC signing
+        public WebhookSubscription()
+        {
+            
+        }
+        public WebhookSubscription(string callbackUrl, List<WebhookEventType> eventTypes)
+        {
+            CallbackUrl = callbackUrl;
+            EventTypes = eventTypes;
+        }
     }
     
 }

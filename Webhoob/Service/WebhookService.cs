@@ -64,30 +64,34 @@ namespace Webhoob.Service
         public async Task PingAllAsync()
         {
             var allWebhooks = await _db.Webhooks.ToListAsync();
-          
-
-            var pingPayload = new {
-                message = "Ping - Webhook is working!",
-                timestamp = DateTime.UtcNow
-            };
 
             var client = new HttpClient();
 
             foreach (var webhook in allWebhooks)
             {
-                try
+                var pingPayload = new
                 {
-                    var content = new StringContent(JsonSerializer.Serialize(pingPayload), Encoding.UTF8, "application/json");
-                    var response = await client.PostAsync(webhook.CallbackUrl, content);
-                    if (!response.IsSuccessStatusCode)
-                    {
-                        Console.WriteLine($"Failed to ping {webhook.CallbackUrl}. Status: {response.StatusCode}");
-                    }
-                }
-                catch (Exception ex)
+                    message = "Ping - Webhook is working!",
+                    timestamp = DateTime.UtcNow,
+                    webhook.EventTypesCsv,
+                    webhook.CallbackUrl
+                };
+
+
+                //try
+                //{
+                var content = new StringContent(JsonSerializer.Serialize(pingPayload), Encoding.UTF8, "application/json");
+                var response = await client.PostAsync(webhook.CallbackUrl, content);
+                if (!response.IsSuccessStatusCode)
                 {
-                    Console.WriteLine($"Error pinging {webhook.CallbackUrl}: {ex.Message}");
+                    Console.WriteLine($"Failed to ping {webhook.CallbackUrl}. Status: {response.StatusCode}");
+                    throw new Exception($"Failed to ping {webhook.CallbackUrl}. Status: {response.StatusCode}");
                 }
+                //}
+                //catch (Exception ex)
+                //{
+                //    Console.WriteLine($"Error pinging {webhook.CallbackUrl}: {ex.Message}");
+                //}
             }
         }
     }

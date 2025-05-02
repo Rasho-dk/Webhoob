@@ -12,14 +12,10 @@ var builder = WebApplication.CreateBuilder(args);
 
 //// Add services to the container.
 
-// We are ensuring the database file is stored in the user's AppData folder.
-var dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "mydatabase.db");
 
-Console.WriteLine("###  dpPath  ###: " + dbPath );
 
 builder.Services.AddDbContext<ObjectDbContext>(options =>
-    options.UseSqlite($"Data Source={dbPath}"));
-//options.UseSqlite("Data Source=mydatabase.db"));
+    options.UseSqlite("Data Source=mydatabase.db"));
 
 builder.Services.AddScoped<WebhookService>();
 builder.Services.AddHttpClient();
