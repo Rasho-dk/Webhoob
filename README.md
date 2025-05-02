@@ -69,10 +69,10 @@ To test the webhook system locally, you can set up a FastAPI server to receive w
     app = FastAPI()
 
     @app.post("/mywebhook")
-    async def github_webhook(request: Request):
-        data = await request.body()
-        print(json.loads(data))  # Log the received webhook payload
-        return {"status": "received"}
+    async def webhook(request: Request):
+    data = await request.body()
+    print(json.loads(data))
+    return
     ```
 2. **Run the local server:** start the FastAPI server by choosing  the port
 
